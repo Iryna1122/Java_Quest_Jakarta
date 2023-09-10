@@ -14,6 +14,8 @@
         <li><a href="QuizController?category=Поп-культура">Поп-культура</a></li>
         <li><a href="QuizController?category=Космос">Космос</a></li>
     </ul>
+
+    <a href="hello-servlet">Hello Servlet</a><br><hr>
 </div>
 </body>
 </html>

@@ -16,7 +16,7 @@ public class HelloServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String url = "http://localhost:8088/Java_Quest_Jakarta_war_exploded/";
+        String url = "jdbc:postgresql://localhost:5432/QuestDB";
         String username = "postgres";
         String password = "postgres";
         try {
@@ -35,16 +35,18 @@ public class HelloServlet extends HttpServlet {
 //                    "('Фірма3', 'Блокнот 3', 120, 'тверда', 'Китай', 'порожньо')";
 
 
-            //             Створення таблиці "Category"
-            String postgreCommand =  "CREATE TABLE Category (" +
-                    "id SERIAL PRIMARY KEY," +
-                    "title VARCHAR(255)";
+            //  Створення таблиці "Category"
+//            String postgreCommand =  "CREATE TABLE Category (id SERIAL PRIMARY KEY,title VARCHAR(255))";
+//            Statement statement = conn.createStatement();
+//           statement.executeUpdate(postgreCommand);
 
             //SQL COMMAND
-            // String sqlCommand = "CREATE TABLE products (Id INT PRIMARY KEY AUTO_INCREMENT, ProductName VARCHAR(20), Price INT)";
+            String sqlCommand = "CREATE TABLE question (id SERIAL PRIMARY KEY, Name VARCHAR(20), categoryId INT, FOREIGN KEY (categoryId) REFERENCES Category(id))";
+            Statement statement8 = conn.createStatement();
+            statement8.executeUpdate(sqlCommand);
 
-//            Statement statement = conn.createStatement();
-//            statement.executeUpdate(postgreCommand);
+
+//=======================================================================================-----------------------------
 //            PrintWriter out = response.getWriter();
 //            out.println("<html><body>");
 //            out.println("<h1>" + "Data!" + "</h1>");
@@ -53,11 +55,11 @@ public class HelloServlet extends HttpServlet {
             //ALL NOTESPAD
             // String postgreCommand = "SELECT * FROM Notepades";
 
-            Statement statement = conn.createStatement();
-            ResultSet set = statement.executeQuery(postgreCommand);
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            out.println("<html><body>");
+//            Statement statement = conn.createStatement();
+//            ResultSet set = statement.executeQuery(postgreCommand);
+//            response.setContentType("text/html; charset=UTF-8");
+//            PrintWriter out = response.getWriter();
+//            out.println("<html><body>");
 
 //            while(set.next())
 //            {
@@ -78,7 +80,7 @@ public class HelloServlet extends HttpServlet {
 //                out.println("<p>Зовнішній вигляд сторінки: " + page_layout + "</p>");
 //
 //            }
-            out.println("</body></html>");
+          //  out.println("</body></html>");
 
 
 
